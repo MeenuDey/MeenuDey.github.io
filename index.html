@@ -1,225 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head -->
 <head>
-    <!-- Metadata, OpenGraph and Schema.org -->
-    <!-- Standard metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Meenu's Personal Website</title>
-    <meta name="author" content="Meenu" />
-    <meta name="keywords" content="Meenu, Meenu-website, Meenu, Meenu iitg, Meenu Rani Dey, Meenu Rani" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Meenu Rani Dey — Personal Website</title>
+  <meta name="author" content="Meenu Rani Dey">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+  <style>
+    :root {
+      --navy: #0f1f3d;
+      --teal: #0d7a6e;
+      --teal-light: #12a898;
+      --sand: #f5f2ec;
+      --warm-white: #fdfcfa;
+      --text-dark: #1a1a2e;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --border: #e2ddd6;
+      --nav-h: 60px;
+    }
 
-    <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.65;
+    }
 
-    <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="none" id="highlight_theme_light" />
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      z-index: 1000;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://spencerpao.github.io/">
+    .nav-social { display: flex; gap: 1rem; align-items: center; }
+    .nav-social a {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .nav-social a:hover { color: var(--teal-light); }
 
-    <!-- Dark Mode -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark" />
+    .nav-links { display: flex; gap: 0.25rem; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .nav-links a.active { color: var(--teal-light); }
 
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
+    /* ── LAYOUT ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 2.5rem) 1.5rem 3rem;
+    }
 
-    <!-- Custom Style for Flexbox Layout -->
-    <style>
-      .flex-container {
-        display: flex;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-      .flex-item {
-        margin: 1rem;
-      }
-      .profile-image {
-        max-width: 200px;
-        margin-right: 1.5rem;
-        margin-bottom: 1rem;
-      }
-      .post-content {
-        flex: 1;
-        min-width: 300px;
-      }
-    </style>
+    /* ── HERO / BIO SECTION ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      padding-bottom: 2rem;
+      border-bottom: 1.5px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .hero-left { display: flex; flex-direction: column; gap: 1rem; }
+
+    .hero-photo {
+      width: 180px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+      display: block;
+    }
+
+    .hero-meta {
+      background: var(--sand);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 0.75rem 1rem;
+    }
+    .hero-meta p {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+      line-height: 1.45;
+    }
+    .hero-meta .role { font-weight: 600; color: var(--navy); font-size: 0.82rem; }
+
+    .hero-right { padding-top: 0.25rem; }
+
+    .name-line {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .name-line span { color: var(--teal); }
+
+    .tagline {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .tagline a {
+      color: var(--teal);
+      text-decoration: none;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+    }
+    .tagline a:hover { text-decoration: underline; }
+
+    .divider {
+      width: 40px;
+      height: 3px;
+      background: var(--teal);
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .bio-text {
+      font-size: 0.935rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .bio-text strong { color: var(--navy); }
+
+    /* research tags */
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+    }
+    .tag {
+      background: var(--sand);
+      border: 1px solid var(--border);
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── NEWS SECTION ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-label h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+    }
+    .section-label .pill {
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.6rem;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .news-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1rem 1.25rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .news-item:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-color: var(--teal-light);
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--teal);
+      padding-top: 0.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    .news-body {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .news-body strong { color: var(--text-dark); }
+
+    .news-badge {
+      display: inline-block;
+      background: #e8f5f3;
+      color: var(--teal);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.1rem 0.5rem;
+      border-radius: 4px;
+      margin-right: 0.4rem;
+      letter-spacing: 0.03em;
+      vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 1rem; }
+      .nav-links a { padding: 0.35rem 0.5rem; font-size: 0.78rem; }
+      .hero { grid-template-columns: 1fr; gap: 1.5rem; }
+      .hero-photo { width: 140px; height: 155px; }
+      main { padding-top: calc(var(--nav-h) + 1.5rem); }
+      .news-item { grid-template-columns: 90px 1fr; gap: 0.75rem; }
+    }
+  </style>
 </head>
+<body>
 
-<!-- Body -->
-<body class="fixed-top-nav ">
+  <!-- NAV -->
+  <nav>
+    <div class="nav-social">
+      <a href="mailto:rmeenu@iitg.ac.in" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/MeenuDey" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/meenu-dey-691653b1/" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="nav-links">
+      <a href="/" class="active">About Me</a>
+      <a href="/education.html">Education</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/achivements.html">Achievements</a>
+      <a href="/experience.html">Experience</a>
+    </div>
+  </nav>
 
-    <!-- Header -->
-    <header>
-        <!-- Nav Bar -->
-        <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
-            <div class="container">
-                <!-- Social Icons -->
-                <div class="container">
-      <!-- Social Icons -->
-      <div class="navbar-brand social">
-        <a href="mailto:rmeenu@iitg.ac.in" title="email"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/MeenuDey" title="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/meenu-dey-691653b1/" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-        
+  <main>
 
+    <!-- BIO -->
+    <section class="hero">
+      <div class="hero-left">
+        <img class="hero-photo" src="/unnamed.jpg" alt="Meenu Rani Dey">
+        <div class="hero-meta">
+          <p class="role">Assistant Professor</p>
+          <p>IIIT Bhubaneswar<br>Odisha, India</p>
+        </div>
       </div>
 
-                <!-- Navbar Toggle -->
-                <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar top-bar"></span>
-                    <span class="icon-bar middle-bar"></span>
-                    <span class="icon-bar bottom-bar"></span>
-                </button>
-
-                <div class="collapse navbar-collapse text-right" id="navbarNav">
-                    <ul class="navbar-nav ml-auto flex-nowrap">
-
-                        <!-- About Me -->
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">About Me<span class="sr-only">(current)</span></a>
-                        </li>
-                        <!--Education -->
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/education.html">Education</a>
-                        </li>
-
-                        <!-- Publication -->
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/publications.html">Publications</a>
-                        </li>
-
-                        <!-- Achivements -->
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/achivements.html">Achivements</a>
-                        </li>
-                        <!-- Experience -->
-
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle flex-nowrap" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Experience
-                            </a>
-                            <ul class="dropdown-menu" id="navbarNav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="/experience.html">Work </a>
-                                </li>
-
-                                <!-- <li class="nav-item ">
-                                    <a class="nav-link" href="/training.html">Training and workshop</a>
-                                </li> -->
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Content -->
-    <div class="container mt-5">
-        <!-- about.html -->
-        <div class="post">
-            <header class="post-header">
-                <h1 class="post-title">
-                    <span class="font-weight-bold">Meenu </span>Rani Dey
-                </h1>
-                <p class="address"><i>A federated learner... &nbsp &nbsp </i> <a href="https://scholar.google.com/citations?user=i1BqEP8AAAAJ&hl=en&oi=ao" title="Google Scholar"><b>Google Scholar</b> </a></p>
-            </header>
-
-            <article>
-                <div class="flex-container">
-                    <!-- Profile image and text -->
-                    <div class="flex-item profile-image">
-                        <figure>
-                            <picture>
-                                <!-- Fallback to the original file -->
-                                <img class="img-fluid z-dept-1 rounded" src="/unnamed.jpg" alt="unnamed.jpg">
-                            </picture>
-                        </figure>
-                        <div class="address">
-                            <p class="text-justify">Assistent Professor, IIIT Bhubaneswar, India</p>
-                        </div>
-                    </div>
-                    <!-- About Me text -->
-                    <div class="flex-item post-content">
-                        <p>
-                            I'm passionate about making our connected world safer through AI-powered security. Just submitted my PhD thesis at IIT Guwahati <a href="https://www.iitg.ac.in/"></a> under Prof. Moumita Patra <a href="https://www.iitg.ac.in/cse/internet-pages/moumita.patra"></a>, where I focused on protecting smart vehicles from cyber threats using machine learning.
-My research creates intelligent defense systems that can detect and localize attacks in real-time—like building a digital immune system for vehicular networks. When I'm not hunting security vulnerabilities, I'm mentoring students and exploring new tech.
-Now starting as Assistant Professor at IIIT Bhubaneswar, excited to inspire the next generation while pushing the boundaries of network security!
-                                              
-                    </div>
-                </div>
-
-                <!-- News -->
-                <div class="news">
-                    <h2>News and Updates</h2>
-                    <div class="table-responsive">
-                        <table class="table table-sm table-borderless">
-                            <tr>
-                                <th scope="row">June 05, 2025</th>
-                                <td>
-                                    Presented my Ph.D. Synopsis seminar on 1st May, 2025 at IIT Guwahati, India.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">May 11, 2025</th>
-                                <td>
-                                    Our work titled <b>A Secure Handover in 5G-V2X: Detecting and Localizing DoS Attack to Ensure Reliable Communication</b> got published in IEEE Transactions on Intelligent Transportation Systems on 15th May, 2025.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">May 11, 2025</th>
-                                <td>
-                                    An Indian patent titled <b>A System for Edge-Aware Machine Learning Framework for Context-S witching in Multi-Modal IoT Environments</b> got published on 9th May,
-
-                                     <!-- Footer -->
-    <footer class="fixed-bottom">
-      <div class="container mt-0" class="text-justify">
-       <b>Thank you for visiting. Fill free to contact. Website updated on 5th May 2022</b>
+      <div class="hero-right">
+        <h1 class="name-line"><span>Meenu</span> Rani Dey</h1>
+        <div class="tagline">
+          <span>A federated learner...</span>
+          <a href="https://scholar.google.com/citations?user=i1BqEP8AAAAJ&hl=en&oi=ao" target="_blank">
+            <i class="fas fa-graduation-cap"></i>&nbsp; Google Scholar
+          </a>
+        </div>
+        <div class="divider"></div>
+        <p class="bio-text">
+          I'm passionate about making our connected world safer through <strong>AI-powered security</strong>.
+          I recently submitted my PhD thesis at <strong>IIT Guwahati</strong> under
+          <strong>Prof. Moumita Patra</strong>, focusing on protecting smart vehicles from cyber threats
+          using machine learning. My research creates intelligent defense systems that can
+          <strong>detect and localize attacks in real-time</strong> — like building a digital immune system
+          for vehicular networks. When I'm not hunting security vulnerabilities, I'm mentoring students
+          and exploring new technology. Now starting as <strong>Assistant Professor at IIIT Bhubaneswar</strong>,
+          excited to inspire the next generation while pushing the boundaries of network security!
+        </p>
+        <div class="research-tags">
+          <span class="tag">Federated Learning</span>
+          <span class="tag">Network Security</span>
+          <span class="tag">5G-V2X</span>
+          <span class="tag">Intrusion Detection</span>
+          <span class="tag">IoT Security</span>
+          <span class="tag">Machine Learning</span>
+        </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- JavaScripts -->
-    <!-- jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- NEWS -->
+    <section>
+      <div class="section-label">
+        <h2>News &amp; Updates</h2>
+        <span class="pill">LATEST</span>
+      </div>
 
-    <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha256-l/1pMF/+J4TThfgARS6KwWrk/egwuVvhRzfLAMQ6Ds4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha256-SyTu6CwrfOhaznYZPoolVw2rxoY7lKYKQvqbtqN93HI=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+      <div class="news-list">
 
-    <!-- Masonry & imagesLoaded -->
-  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+        <div class="news-item">
+          <div class="news-date">Jun 5<br>2025</div>
+          <div class="news-body">
+            <span class="news-badge">SEMINAR</span>
+            Presented my <strong>Ph.D. Synopsis Seminar</strong> on 1st May, 2025 at IIT Guwahati, India.
+          </div>
+        </div>
 
-  <!-- Medium Zoom JS -->
-  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
-  <script src="/assets/js/zoom.js"></script><!-- Load Common JS -->
-  <script src="/assets/js/common.js"></script>
+        <div class="news-item">
+          <div class="news-date">May 15<br>2025</div>
+          <div class="news-body">
+            <span class="news-badge">PUBLICATION</span>
+            Paper titled <strong>A Secure Handover in 5G-V2X: Detecting and Localizing DoS Attack to Ensure Reliable Communication</strong> published in <em>IEEE Transactions on Intelligent Transportation Systems</em>.
+          </div>
+        </div>
 
-    <!-- MathJax -->
-  <script type="text/javascript">
-    window.MathJax = {
-      tex: {
-        tags: 'ams'
-      }
-    };
-  </script>
-  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
-  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <div class="news-item">
+          <div class="news-date">May 9<br>2025</div>
+          <div class="news-body">
+            <span class="news-badge">PATENT</span>
+            Indian patent titled <strong>A System for Edge-Aware Machine Learning Framework for Context-Switching in Multi-Modal IoT Environments</strong> published.
+          </div>
+        </div>
 
+      </div>
+    </section>
 
-  </body>
+  </main>
+
+  <footer>
+    &copy; 2025 Meenu Rani Dey &nbsp;·&nbsp; IIIT Bhubaneswar &nbsp;·&nbsp;
+    <a href="mailto:rmeenu@iitg.ac.in" style="color:var(--teal);text-decoration:none;">rmeenu@iitg.ac.in</a>
+  </footer>
+
+</body>
 </html>
