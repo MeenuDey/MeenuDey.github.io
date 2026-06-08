@@ -72,29 +72,28 @@
 
     /* ── LAYOUT ── */
     main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: calc(var(--nav-h) + 2.5rem) 1.5rem 3rem;
+      width: 100%;
+      padding: calc(var(--nav-h) + 1.5rem) 2.5rem 2rem;
     }
 
     /* ── HERO / BIO SECTION ── */
     .hero {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 2.5rem;
+      grid-template-columns: 210px 1fr;
+      gap: 2rem;
       align-items: start;
-      padding-bottom: 2rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1.5px solid var(--border);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .hero-left { display: flex; flex-direction: column; gap: 1rem; }
+    .hero-left { display: flex; flex-direction: column; gap: 0; }
 
     .hero-photo {
-      width: 180px;
+      width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 10px 10px 0 0;
       box-shadow: 0 6px 24px rgba(0,0,0,0.13);
       display: block;
     }
@@ -102,15 +101,84 @@
     .hero-meta {
       background: var(--sand);
       border-left: 3px solid var(--teal);
-      border-radius: 0 6px 6px 0;
-      padding: 0.75rem 1rem;
+      border-radius: 0 0 6px 6px;
+      padding: 0.8rem 1rem;
     }
-    .hero-meta p {
-      font-size: 0.8rem;
+
+    .hero-meta .role {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 0.82rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-meta .inst {
+      font-size: 0.78rem;
       color: var(--text-mid);
       line-height: 1.45;
+      margin-bottom: 0.6rem;
     }
-    .hero-meta .role { font-weight: 600; color: var(--navy); font-size: 0.82rem; }
+
+    .meta-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0.55rem 0;
+    }
+
+    .contact-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      font-size: 0.74rem;
+      color: var(--text-mid);
+      line-height: 1.4;
+    }
+    .contact-item i {
+      color: var(--teal);
+      font-size: 0.7rem;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .contact-item a {
+      color: var(--teal);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-item a:hover { text-decoration: underline; }
+    .contact-item span { color: var(--text-mid); }
+
+    .profile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.32rem;
+    }
+    .profile-link {
+      display: flex;
+      align-items: center;
+      gap: 0.48rem;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .profile-link i { font-size: 0.8rem; flex-shrink: 0; }
+    .profile-link:hover { color: var(--navy); text-decoration: underline; }
 
     .hero-right { padding-top: 0.25rem; }
 
@@ -119,7 +187,7 @@
       font-size: 2.4rem;
       line-height: 1.15;
       color: var(--navy);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
     }
     .name-line span { color: var(--teal); }
 
@@ -127,7 +195,7 @@
       font-size: 0.88rem;
       color: var(--text-light);
       font-style: italic;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -147,32 +215,44 @@
       height: 3px;
       background: var(--teal);
       border-radius: 2px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .bio-text {
       font-size: 0.935rem;
       color: var(--text-mid);
       line-height: 1.75;
+      text-indent: 2em;
     }
+    .bio-text a { color: var(--teal); text-decoration: none; }
+    .bio-text a:hover { text-decoration: underline; }
     .bio-text strong { color: var(--navy); }
 
-    /* research tags */
-    .research-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.1rem;
+    /* ── RESEARCH INTERESTS — vertical ── */
+    .research-section { margin-top: 0.9rem; }
+    .research-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
     }
-    .tag {
-      background: var(--sand);
-      border: 1px solid var(--border);
-      color: var(--teal);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      letter-spacing: 0.02em;
+    .research-list { display: flex; flex-direction: column; gap: 0.35rem; }
+    .research-list-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+    .research-list-item::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
     }
 
     /* ── NEWS SECTION ── */
@@ -180,7 +260,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.9rem;
     }
     .section-label h2 {
       font-family: 'DM Serif Display', serif;
@@ -197,14 +277,14 @@
       letter-spacing: 0.04em;
     }
 
-    .news-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .news-list { display: flex; flex-direction: column; gap: 0.55rem; }
 
     .news-item {
       display: grid;
       grid-template-columns: 110px 1fr;
-      gap: 1.25rem;
+      gap: 1rem;
       align-items: start;
-      padding: 1rem 1.25rem;
+      padding: 0.75rem 1rem;
       background: #fff;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -248,11 +328,11 @@
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 1rem;
       font-size: 0.78rem;
       color: var(--text-light);
       border-top: 1px solid var(--border);
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
 
     /* ── RESPONSIVE ── */
@@ -260,7 +340,7 @@
       nav { padding: 0 1rem; }
       .nav-links a { padding: 0.35rem 0.5rem; font-size: 0.78rem; }
       .hero { grid-template-columns: 1fr; gap: 1.5rem; }
-      .hero-photo { width: 140px; height: 155px; }
+      .hero-photo { width: 140px; height: 155px; border-radius: 10px; }
       main { padding-top: calc(var(--nav-h) + 1.5rem); }
       .news-item { grid-template-columns: 90px 1fr; gap: 0.75rem; }
     }
@@ -292,36 +372,73 @@
         <img class="hero-photo" src="/unnamed.jpg" alt="Meenu Rani Dey">
         <div class="hero-meta">
           <p class="role">Assistant Professor</p>
-          <p>IIIT Bhubaneswar<br>Odisha, India</p>
+          <p class="inst">Dept. of CSE, IIIT Bhubaneswar</p>
+          <hr class="meta-divider">
+          <p class="contact-title">Contact Details</p>
+          <div class="contact-block">
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:meenurani@iitg.ac.in">meenurani@iitg.ac.in</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:rmeenu@iitg.ac.in">rmeenu@iitg.ac.in</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>CB-54,Dept. of CSE, IIIT Bhubaneswar,Odisha, India – 751003</span>
+            </div>
+          </div>
+          <hr class="meta-divider">
+          <div class="profile-links">
+            <a href="https://scholar.google.com/citations?user=i1BqEP8AAAAJ&hl=en&oi=ao" target="_blank" class="profile-link">
+              <i class="fas fa-graduation-cap"></i> Google Scholar
+            </a>
+            <a href="https://www.linkedin.com/in/meenu-dey-691653b1/" target="_blank" class="profile-link">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/MeenuDey" target="_blank" class="profile-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.researchgate.net" target="_blank" class="profile-link">
+              <i class="fab fa-researchgate"></i> ResearchGate
+            </a>
+            <a href="https://www.sciencedirect.com" target="_blank" class="profile-link">
+              <i class="fas fa-book-open"></i> Science Direct
+            </a>
+          </div>
         </div>
       </div>
 
       <div class="hero-right">
         <h1 class="name-line"><span>Meenu</span> Rani Dey</h1>
-        <div class="tagline">
-          <span>A federated learner...</span>
-          <a href="https://scholar.google.com/citations?user=i1BqEP8AAAAJ&hl=en&oi=ao" target="_blank">
-            <i class="fas fa-graduation-cap"></i>&nbsp; Google Scholar
-          </a>
-        </div>
         <div class="divider"></div>
         <p class="bio-text">
-          I'm passionate about making our connected world safer through <strong>AI-powered security</strong>.
-          I recently submitted my PhD thesis at <strong>IIT Guwahati</strong> under
-          <strong>Prof. Moumita Patra</strong>, focusing on protecting smart vehicles from cyber threats
-          using machine learning. My research creates intelligent defense systems that can
-          <strong>detect and localize attacks in real-time</strong> — like building a digital immune system
-          for vehicular networks. When I'm not hunting security vulnerabilities, I'm mentoring students
-          and exploring new technology. Now starting as <strong>Assistant Professor at IIIT Bhubaneswar</strong>,
-          excited to inspire the next generation while pushing the boundaries of network security!
+          Dr. Meenu Rani Dey completed her Ph.D. in Computer Science and Engineering from the
+          <a href="https://www.iitg.ac.in" target="_blank">Indian Institute of Technology (IIT) Guwahati</a> in 2025.
+          She earned her M.Tech degree from
+          <a href="https://www.iiit-bh.ac.in" target="_blank">IIIT Bhubaneswar</a> and her B.Tech from
+          <a href="https://www.csvtu.ac.in" target="_blank">CSVTU, Chhattisgarh</a>.
+          Dr. Dey's research interests lie at the intersection of network security, 5G-V2X communication, and ML-based attack detection.
+          During her doctoral studies, she focused on securing Cellular Vehicle-to-Everything (C-V2X) networks through efficient real-time
+          detection and localization of DoS attacks, Sybil attack detection via trust-based clustering, and federated learning frameworks
+          for unknown attack identification. Her research has been published in prestigious journals such as IEEE Transactions on Vehicular
+          Technology and IEEE Transactions on Intelligent Transportation Systems, and presented at reputed conferences including IEEE DATE,
+          COMSNETS, and ACM MobiCom, among others. Beyond research, Dr. Dey has actively contributed to the academic community as a
+          TPC Member and Reviewer for IEEE ICC, a Reviewer for Springer JNSM, and a Session Chair at Indocrypt 2025.
+          She has also served on the organising committees of several national and international events including COMSNETS, AIMLSystems, and Indocrypt.
+          She currently serves as an Assistant Professor in the
+          <a href="https://www.iiit-bh.ac.in/department/department-of-computer-science/" target="_blank">Department of Computer Science and Engineering</a> at
+          <a href="https://www.iiit-bh.ac.in" target="_blank">IIIT Bhubaneswar</a>.
         </p>
-        <div class="research-tags">
-          <span class="tag">Federated Learning</span>
-          <span class="tag">Network Security</span>
-          <span class="tag">5G-V2X</span>
-          <span class="tag">Intrusion Detection</span>
-          <span class="tag">IoT Security</span>
-          <span class="tag">Machine Learning</span>
+        <div class="research-section">
+          <h3>Research Interests</h3>
+          <div class="research-list">
+          
+            <div class="research-list-item">C-V2X Communication</div>
+            <div class="research-list-item">Intrusion Detection Systems </div>
+            
+          </div>
         </div>
       </div>
     </section>
@@ -332,9 +449,28 @@
         <h2>News &amp; Updates</h2>
         <span class="pill">LATEST</span>
       </div>
-
+      <div class="news-item">
+          <div class="news-date">Dec 20<br>2025</div>
+          <div class="news-body">
+            <span class="news-badge">PUBLICATION</span>
+            Paper titled <strong>BUFD-Q: Boltzmann-Guided Q-Learning for Optimized 3D UAV Deployment in Flood-Affected Wireless Networks </strong> accepted in <em>IEEE COMSNETS</em>.
+          </div>
+        </div>
       <div class="news-list">
-
+       <div class="news-item">
+          <div class="news-date">Nov 6<br>2025</div>
+          <div class="news-body">
+        <span class="news-badge">PhD Defence</span>
+          Presented my <strong>PhD Defence Seminar</strong> on 6th Nov, 2025 at IIT Guwahati, India.
+          </div>
+       </div>
+       <div class="news-item">
+        <div class="news-date">Jul 28<br>2025</div>
+        <div class="news-body">
+       <span class="news-badge">JOINING</span>
+        Joined as <strong>Assistant Professor</strong> at the Dept. of CSE, IIIT Bhubaneswar.
+        </div>
+       </div>
         <div class="news-item">
           <div class="news-date">Jun 5<br>2025</div>
           <div class="news-body">
